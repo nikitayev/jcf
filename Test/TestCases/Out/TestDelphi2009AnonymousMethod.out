@@ -1,0 +1,88 @@
+unit TestDelphi2009AnonymousMethod;
+
+{ AFS November 2008
+ This unit compiles but is not semantically meaningfull
+ it is test cases for the code formatting utility
+
+ This code test Delphi 2009 Features  }
+
+interface
+
+uses
+  Generics.Collections,
+  Generics.Defaults,
+  Classes;
+
+type
+  TIntProcedure = reference to procedure (var x: integer);
+  TIntFunction  = reference to function (var x: integer): integer;
+  TGenericFunction<T> = reference to function (var x: T): T;
+  TIntStringProcedure = reference to procedure (var x: integer; const y: string);
+
+implementation
+
+procedure SortTest;
+var
+  liList: TList<integer>;
+begin
+  liList := TList<integer>.Create();
+
+  liList.Add(48);
+  liList.Add(12);
+  liList.Add(400);
+  liList.Add(24);
+  liList.Add(4);
+
+  liList.Sort(TComparer<integer>.Construct(
+    function (const Item1, Item2: integer): integer
+    begin
+      Result := Item1 - Item2;
+    end));
+end;
+
+procedure StreamTest;
+var
+  a: integer;
+begin
+
+  while (function (Stream: TStream; var a: integer; b: integer): integer
+      begin
+        Result := 50;
+      end)(nil, a, 0) > 0 do
+  begin
+  end;
+
+end;
+
+function MakeIntProcedure: TIntProcedure;
+begin
+  Result := procedure (var x: integer)
+    begin
+      x := x + 1;
+    end;
+
+end;
+
+function MakeIntFunction: TIntFunction;
+begin
+  Result := function (var x: integer): integer
+    begin
+      Result := x + 1;
+    end;
+
+end;
+
+
+procedure UseIntFunction;
+var
+  fn: TIntFunction;
+  x:  integer;
+begin
+  fn := MakeIntFunction();
+
+  x := 3;
+  fn(x);
+end;
+
+
+end.

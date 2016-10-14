@@ -1,0 +1,15 @@
+unit LittleTest32;
+
+interface
+
+{ this is legal for vars but not consts }
+var
+  Foo:    boolean platform = False;
+  Bar:    boolean library = False;
+  Fish:   boolean deprecated = False;
+  Wibble: boolean platform library = False;
+  Spon:   boolean platform library deprecated = False;
+
+implementation
+
+end.

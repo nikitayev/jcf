@@ -1,0 +1,19 @@
+unit littletest28;
+
+interface
+
+implementation
+
+function bar: pointer;
+begin
+  Result := nil;
+end;
+
+procedure foo;
+asm
+         MOV     EAX,1;
+         CALL    bar;
+         JMP     EAX;
+end;
+
+end.

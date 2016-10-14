@@ -1,0 +1,28 @@
+unit testabsolute;
+
+interface
+
+implementation
+
+uses Classes, types;
+
+function methodpointertodouble(pmmethod: TNotifyEvent): double;
+var
+  lmmethod: TNotifyEvent;
+  ldcast:   double absolute pmmethod;
+begin
+  lmmethod := pmmethod;
+  Result   := ldcast;
+end;
+
+var
+  foo: tpoint;
+
+var
+  foox: longint absolute foo.x;
+
+var
+  myfoo: tpoint absolute testabsolute.foo;
+
+end.
+ 

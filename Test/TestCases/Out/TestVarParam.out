@@ -1,0 +1,35 @@
+unit TestVarParam;
+
+{ AFS 5 Feb 2K
+
+  This code compiles, but is not semantically meaningfull.
+  It is test cases for the code-formating utility
+
+  this unit tests untyped var params
+}
+
+interface
+
+implementation
+
+procedure MangleData(var Data);
+begin
+
+end;
+
+procedure CallMangleData;
+var
+  foo: string;
+  bar: PChar;
+begin
+  foo := 'hello';
+  MangleData(foo);
+
+  bar := PChar(foo);
+  MangleData(bar);
+  MangleData(bar^);
+
+  MangleData(PChar(foo)^);
+end;
+
+end.

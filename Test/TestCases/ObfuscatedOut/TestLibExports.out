@@ -1,0 +1,25 @@
+library testlibexports;
+
+uses
+  edinit,
+  edinout,
+  edformat,
+  edprint;
+
+exports initeditors,
+  doneeditors index 17 Name done,
+  inserttext Name insert,
+  deleteselection Name delete,
+  formatselection,
+  printselection Name print resident,
+  seterrorhandler index 23;
+
+  function foo: boolean; local;
+  begin
+    Result := False;
+  end;
+
+begin
+  initlibrary;
+end.
+ 

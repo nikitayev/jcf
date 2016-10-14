@@ -1,0 +1,19 @@
+unit littletest37;
+
+interface
+
+implementation
+
+const
+  monkey = integer($80000000);
+  soy    = integer($40000000);
+
+procedure foo;
+begin
+  asm
+           MOV     EAX,monkey or soy
+  end;
+end;
+
+end.
+ 

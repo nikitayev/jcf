@@ -1,0 +1,15 @@
+unit littletest41;
+
+interface
+
+implementation
+
+procedure foo;
+begin
+  asm
+           CMP     AL,"'"
+  end;
+end;
+
+end.
+ 

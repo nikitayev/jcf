@@ -1,0 +1,55 @@
+unit TestDelphi2009Generics;
+
+{ AFS November 2008
+ This unit compiles but is not semantically meaningfull
+ it is test cases for the code formatting utility
+
+ This code test Delphi 2009 Features for Generics }
+
+interface
+
+uses Generics.Collections;
+
+type
+  TRecordList<T> = class(TEnumerable<T>)
+  public
+    type
+      TEnumerator = class(TEnumerator<T>)
+      end;
+
+  end;
+
+  TGenericOne<T> = class
+  public
+    function GetT: T; virtual; abstract;
+  end;
+
+  TGenericTwo<S, T> = class
+  public
+    function GetT: T; virtual; abstract;
+    function GetS: S; virtual; abstract;
+  end;
+
+  TGenericThree<S, T, U> = class
+  public
+    function GetT: T; virtual; abstract;
+    function GetS: S; virtual; abstract;
+    function GetU: U; virtual; abstract;
+  end;
+
+implementation
+
+function TestList: integer;
+var
+  liList: TList<integer>;
+begin
+  liList := TList<integer>.Create();
+
+  liList.Add(12);
+  liList.Add(24);
+  liList.Add(48);
+
+  Result := liList.Count;
+end;
+
+end.

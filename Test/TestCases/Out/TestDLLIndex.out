@@ -1,0 +1,26 @@
+unit TestDllIndex;
+
+interface
+
+uses Windows;
+
+function Spaces(n: cardinal): string;
+function RestartDialog(Wnd: HWnd; Reason: PChar; Flags: integer): integer;
+  stdcall; external 'shell32.dll' index 59;
+
+implementation
+
+uses SysUtils;
+
+{*------------------------------------------- 
+Returns a string filled with spaces 
+ 
+@param n Number of spaces expected 
+@return Space filled string 
+---------------------------------------------}
+function Spaces(n: cardinal): string;
+begin
+  Result := IntToStr(n);
+end;
+
+end.

@@ -1,0 +1,27 @@
+unit testreg;
+
+interface
+
+procedure Register;
+procedure fred;
+procedure hoopyfroog;
+
+implementation
+
+procedure Register;
+var
+  Data: boolean;
+begin
+  Data := False;
+end;
+
+procedure fred;
+begin
+end;
+
+procedure hoopyfroog;
+begin
+end;
+
+end.
+ 

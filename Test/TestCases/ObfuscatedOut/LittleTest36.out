@@ -1,0 +1,15 @@
+unit littletest36;
+
+interface
+
+procedure foo; external 'foo.dll' Name '__foo'
+procedure bar; external 'bar.dll' Name '__bar'
+
+implementation
+
+procedure foo2; external 'foo.dll' Name
+  '__foo'
+procedure bar2; external 'bar.dll' Name '__bar'
+
+end.
+ 

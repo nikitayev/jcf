@@ -1,0 +1,29 @@
+unit testcomplexasm2;
+
+interface
+
+uses SysUtils;
+
+type
+  tmyclass = class(TObject)
+    procedure doasm; virtual;
+  end;
+
+implementation
+
+uses DB;
+
+procedure tmyclass.doasm;
+asm
+         MOV     EDX,[EAX]
+         MOV     ECX,dword ptr tfield.getdata
+         CMP     dword ptr[EDX+vmtoffset tfield.isblob],ECX
+         JE      @@alreadydone
+         MOV     ECX,dword ptr[EDX+vmtoffset tfield.isblob]
+         MOV     ECX,dword ptr tfield.isblob
+         MOV     dword ptr[EDX],ECX
+         @@alreadydone:
+end;
+
+end.
+ 

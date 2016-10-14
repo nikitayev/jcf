@@ -1,0 +1,17 @@
+unit littletest59;
+
+interface {$DEFINE FISH}
+
+uses {$IF DEFINED(FISH)}Messages{$ELSE}
+Controls{$IFEND}, Forms;
+
+const
+  foo = 2;
+
+implementation
+
+uses {$IF FOO=1}Classes{$ELSE}SysUtils
+{$IFEND}, StdCtrls;
+
+end.
+ 

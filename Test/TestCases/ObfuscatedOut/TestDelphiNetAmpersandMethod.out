@@ -1,0 +1,39 @@
+unit testdelphinetampersandmethod;
+
+interface
+
+type
+  tclass1 = class
+  private
+    emptyvalue: system.&object;
+  public
+    function testfile: boolean;
+    constructor Create;
+  end;
+
+var
+  atype:    &type;
+  anothertype: system.&type;
+  anobject: &object;
+  anotherobject: system.&object;
+
+implementation
+
+uses system.net, system.io;
+
+constructor tclass1.Create;
+var
+  weby1, weby2: webrequest;
+begin
+  inherited Create;
+  weby1 := webrequest.&Create('http://www.google.com');
+  weby2 := system.net.webrequest.&Create('http://www.google.com');
+end;
+
+function tclass1.testfile: boolean;
+begin
+  Result := system.io.&file.exists('XY');
+end;
+
+end.
+ 

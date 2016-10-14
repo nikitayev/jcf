@@ -1,0 +1,15 @@
+unit littletest32;
+
+interface
+
+var
+  foo:    boolean platform = False;
+  bar:    boolean library = False;
+  fish:   boolean deprecated = False;
+  wibble: boolean platform library = False;
+  spon:   boolean platform library deprecated = False;
+
+implementation
+
+end.
+ 

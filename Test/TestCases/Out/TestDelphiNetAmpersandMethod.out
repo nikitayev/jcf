@@ -1,0 +1,45 @@
+unit TestDelphiNetAmpersandMethod;
+
+interface
+
+type
+  TClass1 = class
+  private
+    EmptyValue: System.&object;
+  public
+
+    function TestFile: boolean;
+    constructor Create;
+  end;
+
+var
+  AType:    &type;
+  AnotherType: System.&type;
+  AnObject: &object;
+  AnotherObject: System.&object;
+
+implementation
+
+uses
+  System.Net,
+  System.IO;
+
+constructor TClass1.Create;
+var
+  weby1, weby2: WebRequest;
+begin
+  inherited Create;
+
+  { this is *not* the constructor
+     the ampersand signals that it is a CLR method 
+  }
+  weby1 := WebRequest.&Create('http://www.google.com');
+  weby2 := System.Net.WebRequest.&Create('http://www.google.com');
+end;
+
+function TClass1.TestFile: boolean;
+begin
+  Result := System.IO.&file.Exists('XY');
+end;
+
+end.

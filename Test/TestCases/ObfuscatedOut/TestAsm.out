@@ -1,0 +1,151 @@
+unit testasm;
+
+interface
+
+procedure procasm1;
+procedure procasm2;
+procedure procasm3;
+
+implementation
+
+uses Dialogs;
+
+procedure procasm1;
+var
+  li1, li2: integer;
+  lb: boolean;
+begin
+  li1 := random(10);
+  li2 := random(10);
+  asm
+           MOV     ESI,dword ptr[EAX+03CH]
+           MOV     EAX,0cb40h
+           MOV     EAX,li1
+           PUSH    dword ptr[EDX]
+           MOV     EDX,[EBP+8]
+           ADD     ESP,4
+           CALL    dword ptr procasm2
+           MOV     lb,AL
+  end;
+  li1 := li1 + li2;
+end;
+
+procedure procasm2;
+asm
+         TEST    CL,CL
+         JNE     @@isdll
+         MOV     EAX,[EDX+EAX*4]
+         MOV     CL,moduleislib
+         MOV     EAX,tlsindex
+         RET
+         @@inittls:
+         CALL    procasm3
+         MOV     EAX,tlsindex
+         JE      @@rtm32
+         CALL    procasm1
+         PUSH    EAX
+         TEST    EAX,EAX
+         RET
+         @@rtm32:
+         RET
+         @@isdll:
+         PUSH    EAX
+         TEST    EAX,EAX
+         CALL    procasm3
+         JE      @@inittls
+         @@2a:
+         MOV     EAX,[EBX]
+         @@2a2:
+         MOV     EAX,[EBX]
+         @@2a2a:
+         MOV     EAX,[EBX]
+         FMUL    ST(1),ST
+end;
+
+procedure procasm3;
+var
+  li1, li2: integer;
+begin
+  li1 := random(10);
+  li2 := random(10);
+  asm
+           MOV     ECX,[EDX]
+           XCHG    ECX,[EAX]
+           CALL    procasm2
+           XCHG    ECX,[EAX]
+           MOV     [EDX],ECX
+  end;
+  li1 := li1 + li2;
+  li2 := random(10);
+  if li2 > 5 then
+  begin
+    ShowMessage('More Asm');
+    asm
+             MOV     [EDX],ECX
+             MOV     ECX,[EDX]
+             PUSH    EAX
+             XCHG    ECX,[EAX]
+    end;
+    li2 := li1 + li2;
+  end;
+end;
+
+type
+  tfish = (goldfish, tetra, hake, haddock, trout, salmon, catfish, bass, eel, shark);
+
+const
+  pond: array[0..6] of tfish = (goldfish, goldfish, eel, haddock, shark, trout, salmon);
+
+procedure testcomplexasm;
+begin
+  asm
+           MOVZX   EAX,tfish(pond[EDX])
+  end;
+end;
+
+procedure testendcolon;
+begin
+  asm
+           @end:
+  end;
+end;
+
+procedure testasmexpr;
+begin
+  asm
+           @@tv:
+           @@nx:
+           JMP     dword ptr @@tv[ECX*4+32]
+  end;
+end;
+
+procedure testasmdot;
+begin
+  asm
+           JA      @@4
+           PUSH    [ESI].integer[4]
+           PUSH    [ESI].integer[0]
+           @@4:
+  end;
+end;
+
+procedure procasmblocks;
+var
+  li1, li2: integer;
+  lb: boolean;
+begin
+  li1 := random(10);
+  li2 := random(10);
+  asm
+           MOV     EAX,li1
+  end;
+  if li1 = 3 then
+  begin
+    asm
+             MOV     EAX,li1
+    end;
+  end;
+end;
+
+end.
+ 

@@ -1,0 +1,76 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{87c7fa47-6a06-47ed-8a32-7c397b137981}</ProjectGuid>
+  </PropertyGroup>
+  <ItemGroup />
+  <ItemGroup />
+  <ProjectExtensions>
+    <Borland.Personality>Default.Personality</Borland.Personality>
+    <Borland.ProjectType />
+    <BorlandProject>
+  <BorlandProject xmlns=""> <Default.Personality> </Default.Personality> </BorlandProject></BorlandProject>
+  </ProjectExtensions>
+  <Target Name="JCFGui">
+    <MSBuild Projects="JCFGui\D11\JCFGui.dproj" Targets="" />
+  </Target>
+  <Target Name="JCFGui:Clean">
+    <MSBuild Projects="JCFGui\D11\JCFGui.dproj" Targets="Clean" />
+  </Target>
+  <Target Name="JCFGui:Make">
+    <MSBuild Projects="JCFGui\D11\JCFGui.dproj" Targets="Make" />
+  </Target>
+  <Target Name="JCFNotepad">
+    <MSBuild Projects="Notepad\D11\JCFNotepad.dproj" Targets="" />
+  </Target>
+  <Target Name="JCFNotepad:Clean">
+    <MSBuild Projects="Notepad\D11\JCFNotepad.dproj" Targets="Clean" />
+  </Target>
+  <Target Name="JCFNotepad:Make">
+    <MSBuild Projects="Notepad\D11\JCFNotepad.dproj" Targets="Make" />
+  </Target>
+  <Target Name="JCFIdeD11">
+    <MSBuild Projects="IdePlugin\D11\JCFIdeD11.dproj" Targets="" />
+  </Target>
+  <Target Name="JCFIdeD11:Clean">
+    <MSBuild Projects="IdePlugin\D11\JCFIdeD11.dproj" Targets="Clean" />
+  </Target>
+  <Target Name="JCFIdeD11:Make">
+    <MSBuild Projects="IdePlugin\D11\JCFIdeD11.dproj" Targets="Make" />
+  </Target>
+  <Target Name="JCF">
+    <MSBuild Projects="CommandLine\D11\JCF.dproj" Targets="" />
+  </Target>
+  <Target Name="JCF:Clean">
+    <MSBuild Projects="CommandLine\D11\JCF.dproj" Targets="Clean" />
+  </Target>
+  <Target Name="JCF:Make">
+    <MSBuild Projects="CommandLine\D11\JCF.dproj" Targets="Make" />
+  </Target>
+  <Target Name="jcf_test">
+    <MSBuild Projects="Test\DUnit\D11\jcf_test.dproj" Targets="" />
+  </Target>
+  <Target Name="jcf_test:Clean">
+    <MSBuild Projects="Test\DUnit\D11\jcf_test.dproj" Targets="Clean" />
+  </Target>
+  <Target Name="jcf_test:Make">
+    <MSBuild Projects="Test\DUnit\D11\jcf_test.dproj" Targets="Make" />
+  </Target>
+  <Target Name="TestCases">
+    <MSBuild Projects="Test\TestCases\D11\TestCases.dproj" Targets="" />
+  </Target>
+  <Target Name="TestCases:Clean">
+    <MSBuild Projects="Test\TestCases\D11\TestCases.dproj" Targets="Clean" />
+  </Target>
+  <Target Name="TestCases:Make">
+    <MSBuild Projects="Test\TestCases\D11\TestCases.dproj" Targets="Make" />
+  </Target>
+  <Target Name="Build">
+    <CallTarget Targets="JCFGui;JCFNotepad;JCFIdeD11;JCF;jcf_test;TestCases" />
+  </Target>
+  <Target Name="Clean">
+    <CallTarget Targets="JCFGui:Clean;JCFNotepad:Clean;JCFIdeD11:Clean;JCF:Clean;jcf_test:Clean;TestCases:Clean" />
+  </Target>
+  <Target Name="Make">
+    <CallTarget Targets="JCFGui:Make;JCFNotepad:Make;JCFIdeD11:Make;JCF:Make;jcf_test:Make;TestCases:Make" />
+  </Target>
+</Project>

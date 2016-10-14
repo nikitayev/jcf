@@ -1,0 +1,14 @@
+unit littletest35;
+
+interface
+
+implementation
+
+procedure foo;
+begin
+  asm
+           CLD end;
+end;
+
+end.
+ 

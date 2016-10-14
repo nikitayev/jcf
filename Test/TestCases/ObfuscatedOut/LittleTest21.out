@@ -1,0 +1,11 @@
+unit littletest21;
+
+interface
+
+type
+  truncated = (False, True);
+
+implementation
+
+end.
+ 

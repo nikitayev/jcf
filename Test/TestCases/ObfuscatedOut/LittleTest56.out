@@ -1,0 +1,19 @@
+unit littletest56;
+
+interface
+
+implementation
+
+const
+  foo = True;
+{$IF not Foo}
+
+  warrawak
+
+
+{$ELSE}
+
+const
+  bar = 3;{$IFEND}
+
+end.

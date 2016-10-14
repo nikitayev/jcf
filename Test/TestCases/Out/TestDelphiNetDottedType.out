@@ -1,0 +1,54 @@
+unit TestDelphiNetDottedType;
+
+interface
+
+type
+
+  TMyClass = class
+  public
+    MSExcelType: System.type;
+    ObjValue:    System.object;
+  end;
+
+
+  TMyClass2 = class
+  private
+    ObjValue:    System.object;
+    MSExcelType: System.type;
+  public
+    function GetObject(MyType: System.type): TObject;
+
+    procedure CatchDottedException;
+  end;
+
+implementation
+
+uses
+  System.Runtime.Remoting;
+
+{ TMyClass2 }
+
+procedure TMyClass2.CatchDottedException;
+begin
+  try
+
+  except
+    // Parser exception near DO keyword
+    on exp: System.Runtime.Remoting.RemotingException do
+    begin
+
+    end;
+
+  end;
+
+end;
+
+function TMyClass2.GetObject(MyType: System.type): TObject;
+begin
+  ObjValue := System.object(Convert.ToDouble(Console.ReadLine));
+  MSExcelType := System.type.GetTypeFromProgID('Excel.Application', True);
+
+  Result := nil;
+end;
+
+end.

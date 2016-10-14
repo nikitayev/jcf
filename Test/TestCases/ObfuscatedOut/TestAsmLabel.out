@@ -1,0 +1,14 @@
+unit testasmlabel;
+
+interface
+
+implementation
+
+procedure test;
+label
+  lbl;
+asm
+         lbl:MOV EAX,[EAX+20h]
+end;
+
+end.

@@ -1,0 +1,47 @@
+unit testdelphinetclass;
+
+interface
+
+uses borland.vcl.SysUtils, system.drawing, system.collections, system.componentmodel, system.Windows.Forms, system.Data;
+
+type
+  tmyform = class(System.Windows.Forms.Form)
+    textbox: system.Windows.Forms.textbox;
+  end;
+
+  ttestclass = class(TObject)
+  strict private
+    foo: integer;
+  strict protected
+    bar: integer;
+  private
+    fish: integer;
+  protected
+    spon: integer;
+  end;
+
+  ttestrecord = record
+    strict private
+    fnamevalue: integer;
+    function getname: string;
+  public
+    nameprefix: string;
+    constructor Create(const psnamevalue: integer);
+    property Name: string Read getname;
+  end;
+
+implementation
+
+constructor ttestrecord.Create(const psnamevalue: integer);
+begin
+  fnamevalue := psnamevalue;
+  nameprefix := 'Test';
+end;
+
+function ttestrecord.getname: string;
+begin
+  Inc(fnamevalue);
+  Result := format('%s %d', [nameprefix, fnamevalue]);
+end;
+
+end.

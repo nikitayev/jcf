@@ -1,0 +1,17 @@
+unit LittleTest60;
+
+{ AFS 
+ This unit compiles but is not semantically meaningfull
+ it is test cases for the code formatting utility
+ }
+
+interface
+
+implementation
+
+const
+  BoolConst: 5 = (2 + 2) .. (1 = 1) = False;
+
+  ValidCharSet: set of 'A'..'z' = ['A'..'Z', 'a'..'z'];
+
+end.
