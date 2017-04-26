@@ -42,11 +42,7 @@ uses
   FileConverter, JcfSettings,  ConvertTypes,
   frBasicSettings, JvMRUManager, JvFormPlacement,
   JvMemo, frDrop, frmBaseSettingsFrame, JvComponent, JvExStdCtrls,
-  JvComponentBase
-  {$IFDEF VER260}
-  , System.Actions
-  {$ENDIF}
-  ;
+  JvComponentBase, System.Actions, System.ImageList;
 
 type
   TfrmMain = class(TForm)

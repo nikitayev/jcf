@@ -7,11 +7,67 @@
 
   // define the appropriate DelphiXX constants
 
+  {$IFDEF VER320}
+     {$IFDEF BCB}
+       {$DEFINE BCB19}
+     {$ELSE}
+       {$DEFINE DELPHI19}
+       {$DEFINE VER260UP}
+     {$ENDIF}
+  {$ENDIF}
+
+  {$IFDEF VER310}
+     {$IFDEF BCB}
+       {$DEFINE BCB19}
+     {$ELSE}
+       {$DEFINE DELPHI19}
+       {$DEFINE VER260UP}
+     {$ENDIF}
+  {$ENDIF}
+
+  {$IFDEF VER300}
+     {$IFDEF BCB}
+       {$DEFINE BCB19}
+     {$ELSE}
+       {$DEFINE DELPHI19}
+       {$DEFINE VER260UP}
+     {$ENDIF}
+  {$ENDIF}
+
+  {$IFDEF VER290}
+     {$IFDEF BCB}
+       {$DEFINE BCB19}
+     {$ELSE}
+       {$DEFINE DELPHI19}
+       {$DEFINE VER260UP}
+     {$ENDIF}
+  {$ENDIF}
+
+  {$IFDEF VER280}
+     {$IFDEF BCB}
+       {$DEFINE BCB19}
+     {$ELSE}
+       {$DEFINE DELPHI19}
+       {$DEFINE VER260UP}
+     {$ENDIF}
+  {$ENDIF}
+
+
+  {$IFDEF VER270}
+     {$IFDEF BCB}
+       {$DEFINE BCB19}
+     {$ELSE}
+       {$DEFINE DELPHI19}
+       {$DEFINE VER260UP}
+     {$ENDIF}
+  {$ENDIF}
+
   {$IFDEF VER260}
      {$IFDEF BCB}
        {$DEFINE BCB19}
      {$ELSE}
        {$DEFINE DELPHI19}
+       {$DEFINE VER260UP}
      {$ENDIF}
   {$ENDIF}
 

@@ -6,6 +6,8 @@ inherited fFiles: TfFiles
   Font.Name = 'Segoe UI'
   ParentFont = False
   OnResize = FrameResize
+  ExplicitWidth = 338
+  ExplicitHeight = 281
   object lblStatus: TLabel
     Left = 8
     Top = 42

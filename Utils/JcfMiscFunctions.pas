@@ -104,12 +104,12 @@ var
   code: integer;
 begin
   // de-localise the string if need be
-  {$IFDEF VER260}
+  {$IFDEF VER260UP}
   if (FormatSettings.DecimalSeparator <> '.') and (Pos(FormatSettings.DecimalSeparator, s) > 0) then
     StrReplace(s,FormatSettings.DecimalSeparator, '.');
   {$ELSE}
-  if (DecimalSeparator <> '.') and (Pos(DecimalSeparator, s) > 0) then
-    StrReplace(s, DecimalSeparator, '.');
+  if (FormatSettings.DecimalSeparator <> '.') and (Pos(FormatSettings.DecimalSeparator, s) > 0) then
+    StrReplace(s, FormatSettings.DecimalSeparator, '.');
   {$ENDIF}
 
   Val(s, Result, Code);
@@ -118,21 +118,21 @@ begin
       ' is not a valid floating point string');
 end;
 
-// Like FloatToStr, but gives back a dot (.) as decimalseparator
+// Like FloatToStr, but gives back a dot (.) as FormatSettings.DecimalSeparator
 function Float2Str(const d: double): string;
 var
   OrgSep: char;
 begin
-  {$IFDEF VER260}
+  {$IFDEF VER260UP}
   OrgSep := FormatSettings.DecimalSeparator;
   FormatSettings.DecimalSeparator := '.';
   Result := FloatToStr(d);
   FormatSettings.DecimalSeparator := OrgSep;
   {$ELSE}
-  OrgSep := DecimalSeparator;
-  DecimalSeparator := '.';
+  OrgSep := FormatSettings.DecimalSeparator;
+  FormatSettings.DecimalSeparator := '.';
   Result := FloatToStr(d);
-  DecimalSeparator := OrgSep;
+  FormatSettings.DecimalSeparator := OrgSep;
   {$ENDIF}
 end;
 
